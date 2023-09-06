@@ -15,11 +15,13 @@ spec:
     spec:
       enableServiceLinks: false
       imagePullSecrets:
-        - name: regcred
+        - name: imgcred
       containers:
         - name: hello-gin
           image: hello-gin
           env:
+            - name: USERNAME
+              value: world
             - name: MY_POD_NAME
               valueFrom:
                 fieldRef:
@@ -55,7 +57,7 @@ metadata:
     external-dns.alpha.kubernetes.io/target: traefik.codemowers.ee
 spec:
   rules:
-  - host: hello-foobar.codemowers.ee
+  - host: hello-kpets.codemowers.ee
     http:
       paths:
       - pathType: Prefix
