@@ -1,0 +1,143 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2023-09-06T13:25:16Z"
+  generation: 391
+  name: hellogin
+  namespace: argocd
+  resourceVersion: "337885854"
+  uid: abb5b4c4-a300-41c4-88ce-4c20a8602dc2
+spec:
+  destination:
+    namespace: sb-kpets-bgdu5
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: .
+    repoURL: https://github.com/kpets/hello-gin.git
+    targetRevision: HEAD
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2023-09-06T13:27:00Z"
+    deployedAt: "2023-09-06T13:27:02Z"
+    id: 0
+    revision: a1f18525a450d17edd6ba1fce1897987690a845b
+    source:
+      path: .
+      repoURL: https://github.com/kpets/hello-gin.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-09-06T13:42:19Z"
+    deployedAt: "2023-09-06T13:42:22Z"
+    id: 1
+    revision: 0394edc128429a1b54a752533bbb348e70583a3b
+    source:
+      path: .
+      repoURL: https://github.com/kpets/hello-gin.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-09-06T13:44:27Z"
+    deployedAt: "2023-09-06T13:44:29Z"
+    id: 2
+    revision: 0394edc128429a1b54a752533bbb348e70583a3b
+    source:
+      path: .
+      repoURL: https://github.com/kpets/hello-gin.git
+      targetRevision: HEAD
+  - deployStartedAt: "2023-09-07T07:07:15Z"
+    deployedAt: "2023-09-07T07:07:16Z"
+    id: 3
+    revision: 0394edc128429a1b54a752533bbb348e70583a3b
+    source:
+      path: .
+      repoURL: https://github.com/kpets/hello-gin.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2023-09-07T07:07:16Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: kristjan.peterson@itcollege.ee
+      retry: {}
+      sync:
+        revision: 0394edc128429a1b54a752533bbb348e70583a3b
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2023-09-07T07:07:15Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/hello-gin unchanged
+        name: hello-gin
+        namespace: sb-kpets-bgdu5
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/hello-gin created
+        name: hello-gin
+        namespace: sb-kpets-bgdu5
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: Ingress
+        message: ingress.networking.k8s.io/hello-gin unchanged
+        name: hello-gin
+        namespace: sb-kpets-bgdu5
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 0394edc128429a1b54a752533bbb348e70583a3b
+      source:
+        path: .
+        repoURL: https://github.com/kpets/hello-gin.git
+        targetRevision: HEAD
+  reconciledAt: "2023-09-07T08:10:53Z"
+  resources:
+  - health:
+      status: Healthy
+    kind: Service
+    name: hello-gin
+    namespace: sb-kpets-bgdu5
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: hello-gin
+    namespace: sb-kpets-bgdu5
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    health:
+      status: Healthy
+    kind: Ingress
+    name: hello-gin
+    namespace: sb-kpets-bgdu5
+    status: Synced
+    version: v1
+  sourceType: Helm
+  summary:
+    externalURLs:
+    - http://hello-kpets.codemowers.ee/api/v1/gin
+    images:
+    - harbor.codemowers.eu/kpets/hello-gin:latest
+  sync:
+    comparedTo:
+      destination:
+        namespace: sb-kpets-bgdu5
+        server: https://kubernetes.default.svc
+      source:
+        path: .
+        repoURL: https://github.com/kpets/hello-gin.git
+        targetRevision: HEAD
+    revision: 0394edc128429a1b54a752533bbb348e70583a3b
+    status: Synced

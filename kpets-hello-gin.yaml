@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hellogin
+  namespace: argocd
+spec:
+  destination:
+    namespace: sb-kpets-bgdu5
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: .
+    repoURL: https://github.com/kpets/hello-gin.git
+    targetRevision: HEAD
