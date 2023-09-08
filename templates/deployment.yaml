@@ -13,12 +13,18 @@ spec:
       labels:
         app: hello-gin
     spec:
+      securityContext:
+        fsgroup: 2000
+        runAsUser: 1000
+        fsGroup: 1000
       enableServiceLinks: false
       imagePullSecrets:
         - name: imgcred
       containers:
         - name: hello-gin
           image: harbor.codemowers.eu/kpets/hello-gin:latest
+          securityContext:
+            readOnlyRootFilesystem: true
           env:
             - name: USERNAME
               value: world
